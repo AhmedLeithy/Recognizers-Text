@@ -18,6 +18,11 @@ namespace Microsoft.Recognizers.Text.Number.Chinese
         {
             var builder = ImmutableDictionary.CreateBuilder<Regex, TypeTag>();
 
+            // if (mode == CJKNumberExtractorMode.ExtractAll)
+            // {
+            //     mode = CJKNumberExtractorMode.Default;
+            // }
+
             // Add Cardinal
             var cardExtractChs = new CardinalExtractor(config, mode);
             builder.AddRange(cardExtractChs.Regexes);

@@ -27,16 +27,16 @@ namespace Microsoft.Recognizers.Text.DateTime
 
         public List<ExtractResult> Extract(string text, DateObject referenceTime)
         {
-            var ret = this.config.DateExtractor.Extract(text, referenceTime);
+            var ret = this.config.DateExtractor.Extract(text, referenceTime); // a
 
             // the order is important, since there is a problem in merging
             AddTo(ret, this.config.TimeExtractor.Extract(text, referenceTime));
-            AddTo(ret, this.config.DurationExtractor.Extract(text, referenceTime));
-            AddTo(ret, this.config.DatePeriodExtractor.Extract(text, referenceTime));
-            AddTo(ret, this.config.DateTimeExtractor.Extract(text, referenceTime));
+            AddTo(ret, this.config.DurationExtractor.Extract(text, referenceTime)); // a
+            AddTo(ret, this.config.DatePeriodExtractor.Extract(text, referenceTime)); // a
+            AddTo(ret, this.config.DateTimeExtractor.Extract(text, referenceTime)); // a
             AddTo(ret, this.config.TimePeriodExtractor.Extract(text, referenceTime));
-            AddTo(ret, this.config.DateTimePeriodExtractor.Extract(text, referenceTime));
-            AddTo(ret, this.config.SetExtractor.Extract(text, referenceTime));
+            AddTo(ret, this.config.DateTimePeriodExtractor.Extract(text, referenceTime)); // a
+            AddTo(ret, this.config.SetExtractor.Extract(text, referenceTime)); // a
             AddTo(ret, this.config.HolidayExtractor.Extract(text, referenceTime));
 
             ret = FilterAmbiguity(ret, text);
